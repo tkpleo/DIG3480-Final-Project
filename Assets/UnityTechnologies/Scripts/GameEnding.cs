@@ -74,10 +74,6 @@ public class GameEnding : MonoBehaviour
     void EndLevel(CanvasGroup imageCanvasGroup, bool doRestart)
     {
         Debug.Log("EndLevel called. doRestart: " + doRestart);
-        if (m_Timer ==0f)
-        {
-            m_Timer =0f;
-        }
         m_Timer += Time.deltaTime;
         imageCanvasGroup.alpha = Mathf.Clamp01(m_Timer / fadeDuration);
 
@@ -93,10 +89,5 @@ public class GameEnding : MonoBehaviour
                 Application.Quit();
             }
         }
-    }
-    public void TriggerEndLevel(CanvasGroup imageCanvasGroup, bool doRestart)
-    {
-        m_Timer = 0f;  // Reset timer when EndLevel is triggered
-        EndLevel(imageCanvasGroup, doRestart);
     }
 }
