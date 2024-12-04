@@ -7,10 +7,10 @@ public class GameEnding : MonoBehaviour
 {
     public float fadeDuration = 1f;
     public float displayImageDuration = 1f;
+    public float timeRemaining = 60f;
     public GameObject player;
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
-    public float timeRemaining = 60f;
     public TMP_Text timeDisplay;
 
     bool timerIsRunning = true;
@@ -75,13 +75,15 @@ public class GameEnding : MonoBehaviour
 
     void EndLevel(CanvasGroup imageCanvasGroup, bool doRestart)
     {
+        Debug.Log("EndLevel called. doRestart: " + doRestart);
         m_Timer += Time.deltaTime;
-        imageCanvasGroup.alpha = m_Timer / fadeDuration;
+        imageCanvasGroup.alpha = fadeDuration;
 
         if (m_Timer > fadeDuration + displayImageDuration)
         {
             if (doRestart)
             {
+                Debug.Log("Restarting level...");
                 SceneManager.LoadScene(0);
             }
             else
