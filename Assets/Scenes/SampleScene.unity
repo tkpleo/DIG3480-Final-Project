@@ -4468,9 +4468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ca50c39bcee6e4e90e6aef43168cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 0
-  displayImageDuration: 1
-  timeRemaining: 4
+  fadeDuration: 2
+  displayImageDuration: 2
+  timeRemaining: 10
   player: {fileID: 1873509279}
   exitBackgroundImageCanvasGroup: {fileID: 1328593894}
   caughtBackgroundImageCanvasGroup: {fileID: 536240676}

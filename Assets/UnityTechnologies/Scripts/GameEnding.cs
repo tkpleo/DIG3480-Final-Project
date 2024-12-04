@@ -51,9 +51,7 @@ public class GameEnding : MonoBehaviour
             }
             else
             {
-                timeRemaining = 0;
                 timerIsRunning = false;
-
                 EndLevel(caughtBackgroundImageCanvasGroup, true);
             }
         }
@@ -76,8 +74,12 @@ public class GameEnding : MonoBehaviour
     void EndLevel(CanvasGroup imageCanvasGroup, bool doRestart)
     {
         Debug.Log("EndLevel called. doRestart: " + doRestart);
+        if (m_Timer ==0f)
+        {
+            m_Timer =0f;
+        }
         m_Timer += Time.deltaTime;
-        imageCanvasGroup.alpha = fadeDuration;
+        imageCanvasGroup.alpha = Mathf.Clamp01(m_Timer / fadeDuration);
 
         if (m_Timer > fadeDuration + displayImageDuration)
         {
@@ -91,5 +93,10 @@ public class GameEnding : MonoBehaviour
                 Application.Quit();
             }
         }
+    }
+    public void TriggerEndLevel(CanvasGroup imageCanvasGroup, bool doRestart)
+    {
+        m_Timer = 0f;  // Reset timer when EndLevel is triggered
+        EndLevel(imageCanvasGroup, doRestart);
     }
 }
